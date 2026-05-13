@@ -14,8 +14,7 @@ spring:
     hikari:
       pool-name: AuthDB-HikariCP
       maximum-pool-size: 10
-      minimum-idle: 5
-      idle-timeout: 300000
+      minimum-idle: 10
       connection-timeout: 20000
       max-lifetime: 1200000
       leak-detection-threshold: 60000
@@ -47,8 +46,8 @@ spring:
         pool:
           max-active: 8
           max-idle: 8
-          min-idle: 0
-        shutdown-timeout: 100ms
+          min-idle: 2
+        shutdown-timeout: 200ms
 
 
   mail:
