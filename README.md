@@ -15,7 +15,6 @@ conçu pour être réutilisable et agnostique du domaine métier.
 | Redis 7       | Sessions + données temporaires      |
 | Caffeine      | Cache permissions (local)           |
 | RQueue        | File de jobs (emails asynchrones)   |
-| Resilience4j  | Résilience (retry, circuit breaker) |
 | Thymeleaf     | Templates emails HTML               |
 | Flyway        | Migrations base de données          |
 
@@ -366,16 +365,6 @@ Gérées automatiquement par Flyway au démarrage.
 | APP_EMAIL_QUEUE_MAX_ATTEMPTS     | Tentatives max d'envoi      | 3      |
 | APP_EMAIL_QUEUE_BACKOFF_DELAY_MS | Délai entre tentatives (ms) | 2000   |
 | APP_EMAIL_QUEUE_JOB_DEADLINE_MS  | Timeout par tentative (ms)  | 10000  |
-
----
-
-### Résilience — Resilience4j
-
-| Variable                          | Description                   | Défaut |
-|-----------------------------------|-------------------------------|--------|
-| APP_RESILIENCE_PG_CB_THRESHOLD    | Seuil d'échecs PostgreSQL (%) | 50     |
-| APP_RESILIENCE_REDIS_RETRY_MAX    | Tentatives max retry Redis    | 2      |
-| APP_RESILIENCE_REDIS_CB_THRESHOLD | Seuil d'échecs Redis (%)      | 50     |
 
 ---
 
