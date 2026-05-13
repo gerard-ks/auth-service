@@ -91,43 +91,6 @@ server:
       - text/html
       - text/plain
 
-
-resilience4j:
-
-  retry:
-    instances:
-      redis:
-        max-attempts: ${APP_RESILIENCE_REDIS_RETRY_MAX:2}
-        wait-duration: 200ms
-        enable-exponential-backoff: true
-        exponential-backoff-multiplier: 2
-        retry-exceptions:
-          - org.springframework.data.redis.RedisConnectionFailureException
-          - org.springframework.data.redis.RedisSystemException
-          - io.lettuce.core.RedisCommandTimeoutException
-        ignore-exceptions:
-          - dev.ks.authlayerarchitecture.exception.BusinessException
-
-  circuitbreaker:
-    instances:
-      postgresql:
-        register-health-indicator: true
-        sliding-window-size: 10
-        minimum-number-of-calls: 5
-        failure-rate-threshold: ${APP_RESILIENCE_PG_CB_THRESHOLD:50}
-        wait-duration-in-open-state: 60s
-        slow-call-rate-threshold: 50
-        slow-call-duration-threshold: 2s
-      redis:
-        register-health-indicator: true
-        sliding-window-size: 10
-        minimum-number-of-calls: 5
-        failure-rate-threshold: ${APP_RESILIENCE_REDIS_CB_THRESHOLD:50}
-        wait-duration-in-open-state: 30s
-        slow-call-rate-threshold: 50
-        slow-call-duration-threshold: 500ms
-
-
 management:
   endpoints:
     web:
